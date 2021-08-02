@@ -83,8 +83,8 @@ int main()
     int result = Palindrome_Or_Not(head);
     if(result==1)
     {
-    cout<<"\nTrue"<<endl;
+    cout<<"\nTrue : Linked List is palindrome Linked List"<<endl;
     }
     else
-    cout<<"\nFalse"<<endl;
+    cout<<"\nFalse : Linked List is not a palindrome Linked list"<<endl;
 }
