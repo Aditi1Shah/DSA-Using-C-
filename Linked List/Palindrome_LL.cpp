@@ -1,3 +1,5 @@
+/* WAP to check if a Linked List is a Palindrome Linked List or not */
+
 #include<iostream>
 using namespace std;
 class Node{
