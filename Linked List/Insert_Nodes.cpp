@@ -1,3 +1,4 @@
+//Insert a node using Recursive Function And also by using recursive function.
 #include<iostream>
 using namespace std;
 class Node{
@@ -10,35 +11,31 @@ Node(int data)
     next=NULL;
 }
 };
-Node* createlinkedlist()    //returns head pointer
+Node* Create_Linked_List()
 {
-    cout<<"Do you want to enter a Node?"<<endl;
+    Node* head = NULL;
     int data;
-    char c;
-    cin>>c;
-    Node* head=NULL;
-    while(c=='y'||c=='Y')
-    {   
-        cout<<"Enter data :-"<<endl;
+    cout<<"\nEnter data for the node : (Enter -1 to terminate the list)"<<endl;
+    cin>>data;
+    while(data!=-1)
+    {
+        Node* newNode = new Node(data);
+        if(head==NULL)
+        {
+            head = newNode;
+        }
+          else
+        {
+        Node* temp=head;
+        while(temp->next!=NULL)
+        {
+            temp=temp->next;
+        }
+        temp->next=newNode;
+        }
         cin>>data;
-        Node *newNode = new Node(data);
-            if(head==NULL)
-                {
-                head = newNode;
-                }
-            else
-                {
-                Node* temp=head;
-                while(temp->next!=NULL)
-                {
-                    temp=temp->next;
-                }
-                temp->next=newNode;
-                }
-        cout<<"Do you want to enter a Node?"<<endl;
-        cin>>c;
     }
-    return head;
+    return(head);
 }
 void print(Node* head)
 {
@@ -89,6 +86,7 @@ int recursivelength(Node* head)
         return 1+recursivelength(head->next);
     }
 }
+// Recursive Approach of Inserting
 Node* insertposrecurive(Node*head,int pos,int data)
 {
     if(head==NULL || pos==0)
@@ -105,28 +103,53 @@ Node* insertposrecurive(Node*head,int pos,int data)
 }
 int main()
 {
-    Node* head = createlinkedlist();
-    cout<<"Linked List Created using function is as follows : "<<endl;
-    print(head);
-    cout<<"\nLength of the linked list found iteratively is :-"<<endl;
-    int lengt = recursivelength(head);
-    cout<<lengt<<endl;
-   /* cout<<"Enter the data of new node to be inserted :-"<<endl;
-    int d2;
-    cin>>d2;
-    cout<<"Enter the position where node is to be inserted :-"<<endl;
-    int p;
-    cin>>p;
-    Node *ptr = insertpos(head,p,d2,lengt);
-    cout<<"New List:-"<<endl;
-    print(ptr);*/
-    cout<<"\nEnter data for new node for recursive insertion :-"<<endl;
-    int d3;
-    cin>>d3;
-    cout<<"Enter the position where node is to be inserted :-"<<endl;
-    int p;
-    cin>>p;
-    Node* ptr2 = insertposrecurive(head,p-1,d3);
-    cout<<"New List :-"<<endl;
-    print(ptr2);
+    cout<<"--------MENU--------"<<endl;
+    cout<<"1.Create Linked List"<<endl;
+    cout<<"2. Print Linked List"<<endl;
+    cout<<"3. Calculate Length of the Linked List"<<endl;
+    cout<<"4. Insert Node using iterative Approach"<<endl;
+    cout<<"5. Insert Node using Recursive Approach"<<endl;
+    cout<<"6. Exit"<<endl;
+    int ch,p,pos,n;
+    Node* head;
+    Node* ptr;
+    while(true)
+    {
+        cout<<"\nEnter your choice : "<<endl;
+        cin>>ch;
+        switch (ch)
+        {
+        case 1: head = Create_Linked_List();
+                cout<<"Linked List is as follows : "<<endl;
+                print(head);
+            break;
+        case 2: cout<<"Linked List is as follows : "<<endl;
+                print(head);
+            break;
+        case 3: p = recursivelength(head);
+                cout<<"Length of the Linked List is : "<<p<<endl;
+                break;
+        case 4: cout<<"Enter data of node to be inserted : "<<endl;
+                cin>>n;
+                cout<<"Enter position where node is to be inserted in the list : "<<endl;
+                cin>>pos;
+                p=recursivelength(head);
+                ptr = insertpos(head,pos,n,p);
+                cout<<"Linked List after inserting new node : "<<endl;
+                print(ptr);
+                break;
+        case 5: cout<<"Enter data of node to be inserted : "<<endl;
+                cin>>n;
+                cout<<"Enter position where node is to be inserted in the list : "<<endl;
+                cin>>pos;
+                ptr = insertposrecurive(head,pos-1,n);
+                cout<<"Linked List after inserting new node : "<<endl;
+                print(ptr);
+                break;
+        case 6: exit(0);
+                break;
+        default: cout<<"Bad Choice"<<endl;
+            break;
+        }
+    }
 }
