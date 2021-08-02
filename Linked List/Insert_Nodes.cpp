@@ -122,10 +122,10 @@ int main()
         case 1: head = Create_Linked_List();
                 cout<<"Linked List is as follows : "<<endl;
                 print(head);
-            break;
+                break;
         case 2: cout<<"Linked List is as follows : "<<endl;
                 print(head);
-            break;
+                break;
         case 3: p = recursivelength(head);
                 cout<<"Length of the Linked List is : "<<p<<endl;
                 break;
