@@ -1,3 +1,4 @@
+//Program to delete a node from entered position.
 #include<iostream>
 using namespace std;
 class Node
@@ -11,34 +12,30 @@ Node(int data)
     next=NULL;
 }
 };
-//create Linked List
-Node* create()
+//Create Linked List
+Node* Create_Linked_List()
 {
-    Node *head = NULL;
-    cout<<"Do you want to enter more Nodes? :- y for yes and n for no  :- "<<endl;
-    char ch;
-    cin>>ch;
-    int d1;
-    while(ch=='y'|| ch == 'Y')
+    Node* head = NULL;
+    int data;
+    cout<<"\nEnter data for the node : (Enter -1 to terminate the list)"<<endl;
+    cin>>data;
+    while(data!=-1)
     {
-         cout<<"Enter data for the node :-"<<endl;
-            cin>>d1;
-            Node* newNode = new Node(d1);
+        Node* newNode = new Node(data);
         if(head==NULL)
         {
-            head=newNode;
+            head = newNode;
         }
-        else
+          else
         {
-            Node* temp = head;
-           while(temp->next!=NULL)
-           {
+        Node* temp=head;
+        while(temp->next!=NULL)
+        {
             temp=temp->next;
-           }
-           temp->next=newNode;
         }
-         cout<<"Do you want to enter a Node?"<<endl;
-         cin>>ch;
+        temp->next=newNode;
+        }
+        cin>>data;
     }
     return(head);
 }
@@ -70,12 +67,13 @@ void print(Node *head)
 }
 int main()
 {
-    Node* head = create();
+    Node* head = Create_Linked_List();
+    cout<<"Linked List is as follows : "<<endl;
     print(head);
     cout<<"\nEnter position from which Node is to be deleted from the List :-"<<endl;
     int p;
     cin>>p;
     Node *ptr = deletepos(head,p);
-    cout<<"List after Deleting Node from position "<<p-1<<endl;
+    cout<<"List after Deleting Node from position "<<p<<endl;
     print(ptr);
 }
